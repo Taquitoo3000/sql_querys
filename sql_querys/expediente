@@ -1,0 +1,14 @@
+use PRODHEG;
+
+select
+	e.Clave,
+	e.Creacion as FechaInicio,
+	ofi.Clave as Zona,
+	est.Descripcion as Estatus,
+	e.Salida as FechaConclusion
+from
+	Expediente as e
+	inner join Estatus as est on e.Estatus_Id=est.Id
+	inner join Oficina as ofi on e.Oficina_Id=ofi.Id
+	where e.ExpedienteTipo_Id = 3
+		and e.Clave like '%2026%'
